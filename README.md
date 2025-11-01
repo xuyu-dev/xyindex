@@ -20,28 +20,44 @@
 
 ## 快速开始
 
-### 安装依赖
+### 本地开发
+
+#### 安装依赖
 
 ```bash
-npm install
+pnpm install
 ```
 
-### 开发模式
+#### 开发模式
 
 ```bash
-npm run dev
+pnpm dev
 ```
 
 访问 [http://localhost:3000](http://localhost:3000) 查看效果。
 
-### 构建生产版本
+#### 构建生产版本
 
 ```bash
-npm run build
+pnpm build
 ```
 
-### 启动生产服务
+#### 启动生产服务
 
 ```bash
-npm start
+pnpm start
+```
+
+### Docker 部署
+
+#### 构建镜像
+
+```bash
+docker build -t xyindex .
+```
+
+#### 运行容器
+
+```bash
+docker run -d -p 3000:3000 --name xyindex xyindex
 ```
