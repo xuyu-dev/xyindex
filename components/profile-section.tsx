@@ -1,0 +1,75 @@
+"use client"
+
+import { motion } from "framer-motion"
+import { Github } from "lucide-react"
+
+const technologies = [
+  "React",
+  "Next.js",
+  "Golang",
+  "Rust",
+  "Python",
+  "Tauri2"
+]
+
+export function ProfileSection() {
+  return (
+    <div className="relative z-20 flex flex-col items-center justify-center space-y-12 px-6 py-20">
+      <motion.div
+        className="text-center space-y-6 max-w-3xl"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8, delay: 0.2 }}
+      >
+        <h2 className="text-2xl md:text-3xl font-bold gradient-text leading-relaxed">
+          关山难越，谁悲失路之人；萍水相逢，尽是他乡之客
+        </h2>
+      </motion.div>
+
+      <motion.div
+        className="text-center space-y-4"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8, delay: 0.5 }}
+      >
+        <p className="text-lg md:text-xl text-gray-300 font-light">
+          全栈工程师
+        </p>
+      </motion.div>
+
+      <motion.div
+        className="flex flex-wrap justify-center gap-3 max-w-2xl"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8, delay: 0.8 }}
+      >
+        {technologies.map((tech, index) => (
+          <motion.div
+            key={tech}
+            className="px-4 py-2 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full text-sm text-gray-300 hover:bg-white/10 transition-colors"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.3, delay: 0.8 + index * 0.1 }}
+            whileHover={{ scale: 1.05 }}
+          >
+            {tech}
+          </motion.div>
+        ))}
+      </motion.div>
+
+      <motion.a
+        href="https://github.com/xuyu"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="flex items-center space-x-2 px-6 py-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full hover:bg-white/20 transition-all group"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 1.4 }}
+        whileHover={{ scale: 1.05 }}
+      >
+        <Github className="w-5 h-5 text-white group-hover:rotate-12 transition-transform" />
+        <span className="text-white font-medium">GitHub</span>
+      </motion.a>
+    </div>
+  )
+}
