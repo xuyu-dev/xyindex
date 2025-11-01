@@ -198,8 +198,11 @@ export function ParticleName({ onComplete }: ParticleNameProps = {}) {
     offscreenCanvas.height = canvas.height
     const offscreenCtx = offscreenCanvas.getContext("2d")!
 
+    // 响应式字体大小：移动端使用较小字体
+    const baseFontSize = canvas.width < 768 ? Math.min(canvas.width * 0.25, 120) : 240
+
     offscreenCtx.fillStyle = "white"
-    offscreenCtx.font = "bold 240px Arial"
+    offscreenCtx.font = `bold ${baseFontSize}px Arial`
     offscreenCtx.textAlign = "center"
     offscreenCtx.textBaseline = "middle"
     offscreenCtx.fillText("xuyu", canvas.width / 2, canvas.height / 2)
