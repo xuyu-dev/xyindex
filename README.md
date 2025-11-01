@@ -2,14 +2,6 @@
 
 自用的个人主页，采用黑色主题配合星空背景和粒子特效。
 
-## 用到的技术栈
-
-- **框架**: Next.js 14
-- **语言**: TypeScript
-- **样式**: Tailwind CSS
-- **动画**: Framer Motion
-- **图标**: Lucide React
-
 ## 功能特性
 
 - ✨ 粒子特效昵称展示
@@ -20,44 +12,16 @@
 
 ## 快速开始
 
-### 本地开发
-
-#### 安装依赖
-
-```bash
-pnpm install
-```
-
-#### 开发模式
-
-```bash
-pnpm dev
-```
-
-访问 [http://localhost:3000](http://localhost:3000) 查看效果。
-
-#### 构建生产版本
+### 本地
 
 ```bash
 pnpm build
-```
-
-#### 启动生产服务
-
-```bash
 pnpm start
 ```
 
-### Docker 部署
-
-#### 构建镜像
+### Docker
 
 ```bash
 docker build -t xyindex .
-```
-
-#### 运行容器
-
-```bash
 docker run -d -p 3000:3000 --name xyindex xyindex
 ```
