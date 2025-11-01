@@ -18,22 +18,35 @@ class Particle {
   target: Vector2D = { x: 0, y: 0 }
 
   closeEnoughTarget = 100
-  maxSpeed = 3.0
-  maxForce = 0.3
+  maxSpeed = 5.0
+  maxForce = 0.5
   particleSize = 10
   isKilled = false
+  settled = false
 
   startColor = { r: 0, g: 0, b: 0 }
   targetColor = { r: 0, g: 0, b: 0 }
   colorWeight = 0
-  colorBlendRate = 0.01
+  colorBlendRate = 0.02
 
   move() {
+    if (this.settled) return
+
     let proximityMult = 1
     const distance = Math.sqrt(
       Math.pow(this.pos.x - this.target.x, 2) +
       Math.pow(this.pos.y - this.target.y, 2)
     )
+
+    if (distance < 2 && this.colorWeight >= 0.98) {
+      this.settled = true
+      this.pos.x = this.target.x
+      this.pos.y = this.target.y
+      this.vel.x = 0
+      this.vel.y = 0
+      this.colorWeight = 1.0
+      return
+    }
 
     if (distance < this.closeEnoughTarget) {
       proximityMult = distance / this.closeEnoughTarget
@@ -120,6 +133,7 @@ class Particle {
       this.colorWeight = 0
 
       this.isKilled = true
+      this.settled = false
     }
   }
 }
@@ -188,6 +202,7 @@ export function ParticleName({ onComplete }: ParticleNameProps = {}) {
         if (particleIndex < particles.length) {
           particle = particles[particleIndex]
           particle.isKilled = false
+          particle.settled = false
           particleIndex++
         } else {
           particle = new Particle()
@@ -200,10 +215,10 @@ export function ParticleName({ onComplete }: ParticleNameProps = {}) {
           particle.pos.x = randomPos.x
           particle.pos.y = randomPos.y
 
-          particle.maxSpeed = Math.random() * 10 + 8
+          particle.maxSpeed = Math.random() * 8 + 10
           particle.maxForce = particle.maxSpeed * 0.08
           particle.particleSize = Math.random() * 6 + 6
-          particle.colorBlendRate = Math.random() * 0.05 + 0.005
+          particle.colorBlendRate = Math.random() * 0.03 + 0.015
 
           particles.push(particle)
         }

@@ -18,7 +18,7 @@ export default function HomePage() {
           className="absolute inset-0 w-full h-screen flex items-center justify-center"
           initial={{ y: 0 }}
           animate={{
-            y: isComplete ? "-25vh" : "0vh",
+            y: isComplete ? "-20vh" : "0vh",
           }}
           transition={{ duration: 1.5, ease: "easeInOut" }}
         >
@@ -28,13 +28,13 @@ export default function HomePage() {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, top: "50vh" }}
           animate={{
             opacity: isComplete ? 1 : 0,
-            y: isComplete ? 0 : 30,
+            top: isComplete ? "48vh" : "50vh",
           }}
-          transition={{ duration: 1, delay: isComplete ? 0.8 : 0 }}
-          className="absolute bottom-0 left-0 right-0"
+          transition={{ duration: 1.2, delay: isComplete ? 0.5 : 0, ease: "easeOut" }}
+          className="absolute left-0 right-0"
         >
           <ProfileSection />
         </motion.div>

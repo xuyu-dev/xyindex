@@ -15,9 +15,9 @@ const technologies = [
 
 export function ProfileSection() {
   return (
-    <div className="relative z-20 flex flex-col items-center justify-center space-y-12 px-6 py-20">
+    <div className="relative z-20 flex flex-col items-center justify-center space-y-8 px-6">
       <motion.div
-        className="text-center space-y-6 max-w-3xl"
+        className="text-center space-y-4 max-w-3xl"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8, delay: 0.2 }}
@@ -25,17 +25,6 @@ export function ProfileSection() {
         <h2 className="text-2xl md:text-3xl font-bold gradient-text leading-relaxed">
           关山难越，谁悲失路之人；萍水相逢，尽是他乡之客
         </h2>
-      </motion.div>
-
-      <motion.div
-        className="text-center space-y-4"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8, delay: 0.5 }}
-      >
-        <p className="text-lg md:text-xl text-gray-300 font-light">
-          全栈工程师
-        </p>
       </motion.div>
 
       <motion.div
